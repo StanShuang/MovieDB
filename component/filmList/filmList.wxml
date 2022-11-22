@@ -1,0 +1,46 @@
+<!--component/filmList.wxml-->
+<template name="filmList">
+  <block wx:if="{{showLoading}}">
+    <view class="loading">玩命加载中..</view>
+  </block>
+  <block wx:else>
+    <view class="film">
+      <block wx:for="{{films}}" wx:for-index="filmIndex" wx:for-item="filmItem" wx:key="film">
+        <view data-id="{{filmItem.id}}" class="film-item" catchtap="viewFilmDetail">
+          <view class="film-cover">
+            <image src="{{'https://image.tmdb.org/t/p/w300' + filmItem.poster_path}}" class="film-cover-img" />
+            <view class="film-rating">
+              <block wx:if="{{filmItem.vote_average == 0}}">
+                暂无评分
+              </block>
+              <block wx:else>
+                {{filmItem.vote_average}}分
+              </block>
+            </view>
+          </view>
+          <view class="film-intro">
+            <block wx:if="{{index == 0}}">
+              <view class="film-title">{{filmItem.title}}</view>
+              <view class="film-date">{{filmItem.release_date}}</view>
+            </block>
+            <block wx:else>
+              <view class="film-title">{{filmItem.name}}</view>
+              <view class="film-date">{{filmItem.first_air_date}}</view>
+            </block>
+            <!-- <view class="film-tag">
+              <view class="film-tag-item" wx:for="{{filmItem.genres}}" wx:for-item="filmTagItem" wx:key="filmTagItem" data-tag="{{filmTagItem}}" catchtap="viewFilmByTag">
+                {{filmTagItem}}
+              </view>
+            </view> -->
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{hasMore}}">
+        <view class="loading-tip">加载中..</view>
+      </block>
+      <block wx:else>
+        <view class="loading-tip">没有更多内容了</view>
+      </block>
+    </view>
+  </block>
+</template>

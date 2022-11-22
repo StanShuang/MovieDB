@@ -1,0 +1,7 @@
+<!--pages/coming/coming.wxml-->
+
+<import src="../../component/filmList/filmList.wxml" />
+<template is="filmList" data="{{films:comingList,hasMore:hasMore,showLoading:showLoading,index:index}}" />
+
+<import src="../../component/message/message.wxml" />
+<template is="message" data="{{message:message}}" />

@@ -1,0 +1,17 @@
+<!--pages/my/my.wxml-->
+<view class="container">
+  <view class="user-info" style="background-image: url({{skin}})">
+    <view class="user-skin" bindtap="viewSkin" />
+    <image src="{{userInfo.avatarUrl}}" class="user-avater" />
+    <view class="user-nickname">{{userInfo.user.username}}</view>
+    <view class="user-location">中国.成都</view>
+  </view>
+  <view class="grids">
+    <block wx:for="{{gridList}}" wx:for-item="gridItem" wx:for-index="gridIndex" wx:key="grid">
+      <view class="grid" bindtap="vireGridDetail" data-url="{{gridItem.enName}}">
+        <view class="grid-icon grid-icon-{{gridItem.enName}}"/>
+        <view class="grid-title">{{gridItem.zhName}}</view>
+      </view>
+    </block>
+  </view>
+</view>

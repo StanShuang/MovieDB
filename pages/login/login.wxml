@@ -1,0 +1,10 @@
+<!--pages/login/login.wxml-->
+<block wx:if="{{!showLoading}}">
+  <view class="login">
+    <button bindtap="getTouristsSession" class="login-tourists">游客通行证</button>
+    <button bindtap="getSession" class="login-user">用户通行证</button>
+  </view>
+</block>
+<block wx:else>
+  <view class="loading">玩命加载中..</view>
+</block>

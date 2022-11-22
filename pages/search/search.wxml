@@ -1,0 +1,8 @@
+<!--pages/search/search.wxml-->
+<block wx:if="{{!showLoading}}">
+  <import src="../searchList/searchList.wxml"/>
+  <template is="searchList" data="{{showSearchList: showSearchList,hasMore:hasMore}}"/>
+</block>
+<block wx:else>
+  <view class="loading">搜索中..</view>
+</block>

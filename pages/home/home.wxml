@@ -1,0 +1,44 @@
+<!--pages/home/home.wxml-->
+<block wx:if="{{!showLoading}}">
+  <view class="home">
+    <view class="home-img">
+      <image class="home-log" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" />
+    </view>
+    <view class="home-search-bar">
+      <input class="home-search-text" placeholder-class="home-search-text-plc" bindinput="viewSearch" placeholder="搜索电影、剧集、人物.." type="text" />
+      <button class="home-search-button" bindtap="onSearchBottom" style="width: 200rpx;">Search</button>
+    </view>
+    <view>
+      <view class="home-section">
+        <view class="home-section-title">趋势</view>
+        <button class="home-section-day" style="width: 170rpx; color: {{clickColor}};" bindtap="onSectionDay">今日</button>
+        <button class="home-section-week" style="width: 170rpx; color: {{normalColor}}" bindtap="onSectionWeek">本周</button>
+      </view>
+      <view class="home-film">
+        <block wx:for="{{sections}}" wx:for-index="sectionsIndex" wx:for-item="sectionsItem" wx:key="sections">
+          <view data-item="{{sectionsItem}}" class="section-item" catchtap="viewSectionDetail" >
+            <image src="{{'https://image.tmdb.org/t/p/original' + sectionsItem.backdrop_path}}" class="section-img" />
+            <view class="section-title">{{sectionsItem.media_type == 'movie' ? sectionsItem.title : sectionsItem.name}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <block wx:if="{{isShowLogingButton}}">
+      <view class="home-login">
+        <view class="home-login-text">在账户权限下可以更好的和电影、剧集、人物，发生关联，更好的管理爱好，同时添加收藏、评分，请：</view>
+        <button class="home-login-btn" style="width: 300rpx; height: auto;" bindtap="onLoginPage">登录</button>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="home-user">
+        <view class="home-user-name" >你好 {{user.username}}!</view>
+      </view>
+    </block>
+  </view>
+</block>
+<block wx:else>
+  <view class="loading">玩命加载中..</view>
+</block>
+<import src="../../component/message/message.wxml"/>
+<template is="message" data="{{message: message}}"/>

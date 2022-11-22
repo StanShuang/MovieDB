@@ -1,0 +1,66 @@
+<!--pages/searchList/searchList.wxml-->
+<template name="searchList">
+  <view class="search">
+    <block wx:for="{{showSearchList}}" wx:for-index="listIndex" wx:for-item="listItem" wx:key="searchList">
+      <view data-id="{{listItem.id}}" class="search-item" catchtap="searchItemDetail">
+        <block wx:if="{{listItem.media_type != 'person'}}">
+          <view class="search-movieitem">
+            <view>
+              <image src="{{'https://image.tmdb.org/t/p/original' + listItem.poster_path}}" class="search-item-img" />
+            </view>
+            <view class="search-item-intro">
+              <block wx:if="{{listItem.media_type == 'movie'}}">
+                <view class="search-item-intro-name">{{listItem.title}}</view>
+                <view class="search-item-intro-date">{{listItem.release_date}}</view>
+                <view class="search-item-intro-overview">{{listItem.overview}}</view>
+              </block>
+              <block wx:else="{{listItem.media_type == 'tv'}}">
+                <view class="search-item-intro-name">{{listItem.name}}</view>
+                <view class="search-item-intro-date">{{listItem.first_air_date}}</view>
+                <view class="search-item-intro-overview">{{listItem.overview}}</view>
+              </block>
+            </view>
+          </view>
+        </block>
+        <block wx:else>
+          <view class="search-personitem">
+            <view>
+              <image mode="aspectFill" src="{{listItem.profile_path ? 'https://image.tmdb.org/t/p/original' + listItem.profile_path : '../../dist/images/error_person_img.png'}}" class="search-item-personimg" />
+            </view>
+            <view class="search-item-person">
+              <view class="search-item-person-name">{{listItem.name}}</view>
+              <view class="search-item-person-know">
+                <view class="search-item-person-know-name">参演.</view>
+                <wxs module="knowNameTitle">
+                  var title = '';
+                  var getActionTitle = function (index, item, length) {
+                    if (item.media_type == 'tv') {
+                      title = item.name;
+                    } else {
+                      title = item.title;
+                    }
+                    if (index < length - 1) {
+                      title += ',';
+                    }
+                    return title;
+                  }
+
+                  module.exports.getActionTitle = getActionTitle;
+                </wxs>
+                <block wx:for="{{listItem.known_for}}" wx:for-index="listIndexofknow" wx:for-item="listItemofknow" wx:key="searchListofknow">
+                  <view class="search-item-person-know-name">{{knowNameTitle.getActionTitle(listIndexofknow,listItemofknow,listItem.known_for.length)}}</view>
+                </block>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+  <block wx:if="{{hasMore}}">
+    <view class="loading-tip">加载中..</view>
+  </block>
+  <block wx:else>
+    <view class="loading-tip">没有更多内容了</view>
+  </block>
+</template>

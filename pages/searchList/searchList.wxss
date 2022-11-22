@@ -1,0 +1,124 @@
+/* pages/searchList/searchList.wxss */
+.search{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10rpx 15rpx;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 0 0 40rpx #f4f4f4 inset;
+}
+
+.search-item{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow: hidden;
+}
+.search-movieitem{
+  display: flex;
+  flex-direction: row;
+  height: 200rpx;
+  width: 100%;
+  margin-top: 20rpx;
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+  border: 1px solid #e4e4e4;
+  box-shadow: 0 20rpx 40rpx #eee;
+  overflow: hidden;
+}
+.search-personitem{
+  display: flex;
+  flex-direction: row;
+  height: 150rpx;
+  width: 100%;
+  margin-top: 20rpx;
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+  border: 1px solid #e4e4e4;
+  box-shadow: 0 20rpx 40rpx #eee;
+  overflow: hidden;
+}
+.search-item-img{
+  width: 140rpx;
+  height: 200rpx;
+}
+.search-item-personimg{
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.search-item-person{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 15rpx;
+}
+
+.search-item-person-name{
+  color: #000000;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.search-item-person-know{
+  display: flex;
+  flex-direction: row;
+  color: #000000;
+  font-size: 26rpx;
+  font-weight: 400;
+  padding-top: 5rpx ;
+}
+
+.search-item-person-know-name{
+  padding-left: 5rpx;
+}
+
+.search-item-intro{
+  padding: 15rpx 10rpx;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+.search-item-intro-name{
+  color: #000000;
+  font-weight: bolder;
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  font-size: 28rpx;  
+  white-space: nowrap;
+}
+.search-item-intro-date{
+  color: #999;
+  box-sizing: border-box;
+  white-space: nowrap;
+  font-size: 25rpx;
+  padding-top: 5rpx;
+}
+.search-item-intro-overview{
+  width: 100%;
+  padding-top: 25rpx;
+  padding-right: 10rpx;
+  overflow:hidden;
+  height: auto;
+  flex-direction: column;
+  color: #000000;
+  font-size: 24rpx;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+.loading-tip{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #ccc;
+}

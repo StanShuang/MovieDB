@@ -1,0 +1,35 @@
+<!--component/filmListver/filmListver.wxml-->
+<template name="filmListver">
+  <block wx:if="{{showLoading}}">
+    <view class="loading">加载中..</view>
+  </block>
+  <block wx:else>
+    <view class="film">
+      <block wx:for="{{films}}" wx:for-index="filmIndex" wx:for-item="filmItem" wx:key="film">
+        <view data-id="{{filmItem.id}}" class="film-item" catchtap="viewFilmDetail">
+          <image src="{{'https://image.tmdb.org/t/p/original' + filmItem.backdrop_path}}" class="film-cover-img-bac" />
+          <view class="film-cover-item">
+            <view class="film-cover">
+              <image src="{{'https://image.tmdb.org/t/p/original' + filmItem.poster_path}}" class="film-cover-img" />
+            </view>
+            <view class="film-title-data">
+              <view class="film-title">{{filmItem.title}}</view>
+              <view class="film-overview">{{filmItem.overview}}</view>
+              <view class="film-date">{{filmItem.release_date}}</view>
+            </view>
+            <view class="film-intro">
+              <view class="film-rating">
+                <block wx:if="{{filmItem.vote_average == 0}}">
+                  暂无评分
+                </block>
+                <block wx:else>
+                  {{filmItem.vote_average}}分
+                </block>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </block>
+</template>

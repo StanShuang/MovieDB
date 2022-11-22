@@ -1,0 +1,56 @@
+<!--pages/detail/tvDetail/tvDetail.wxml-->
+<view class="detail">
+  <view class="det-top">
+    <image src="{{'https://image.tmdb.org/t/p/original' + dateDetail.backdrop_path}}" class="top-img-bac" />
+    <view class="top-action">
+      <view class="top-cover">
+        <image src="{{'https://image.tmdb.org/t/p/original' + dateDetail.poster_path}}" class="top-action-img" />
+      </view>
+      <view class="top-title-item">
+        <view class="top-title">{{dateDetail.title}}</view>
+        <view class="top-tab">
+          <view class="top-tab-release-date">{{dateDetail.release_date + '(' + dateDetail.production_countries[0].iso_3166_1 + ')'}}</view>
+          <view class="top-tab-dot"> . </view>
+          <wxs module="genresString">
+            var title = '';
+            var timeFormat = '';
+            var getActionTitle = function (index, item, length) {
+              title = item.name;
+              if (index < length - 1) {
+                title += ',';
+              }
+              return title;
+            };
+            var getTimeFormat = function (time) {
+              var hour = parseInt(time / 60);
+              if (time % 60 == 0) {
+                timeFormat = hour + 'h'
+              } else {
+                timeFormat = hour + 'h' + time % 60 + 'm'
+              }
+              return timeFormat;
+            }
+            module.exports.getActionTitle = getActionTitle;
+            module.exports.getTimeFormat = getTimeFormat;
+          </wxs>
+          <block wx:for="{{dateDetail.genres}}" wx:for-index="listIndex" wx:for-item="listItem" wx:key="genres">
+            <view class="top-tab-genre">{{genresString.getActionTitle(listIndex,listItem,dateDetail.genres.length)}}</view>
+          </block>
+          <view class="top-tab-dot"> . </view>
+          <view class="top-tab-runtime">{{genresString.getTimeFormat(dateDetail.runtime)}}</view>
+        </view>
+        <view class="top-tagline">{{dateDetail.tagline}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="cast">
+    <block wx:for="{{credits_cast}}" wx:for-index="castIndex" wx:for-item="castItem" wx:key="casts">
+      <view data-item="{{castItem}}" class="cast-item" catchtap="castDetail">
+        <image src="{{'https://image.tmdb.org/t/p/original' + castItem.profile_path}}" class="cast-img"/>
+        <view class="cast-name">{{castItem.original_name}}</view>
+        <view class="cast-character">{{castItem.character}}</view>
+      </view>
+    </block>
+  </view>
+  <view class="top-overview">{{dateDetail.overview}}</view>
+</view>

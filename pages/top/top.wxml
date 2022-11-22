@@ -1,0 +1,7 @@
+<!--pages/top/top.wxml-->
+<view class="view-top">
+  <import src="../../component/filmListver/filmListver.wxml" />
+  <template is="filmListver" data="{{films: topMovieList,hasMore:hasMore,showLoading:showLoading}}" />
+  <import src="../../component/message/message.wxml" />
+  <template is="message" data="{{message:message}}" />
+</view>

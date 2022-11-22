@@ -1,0 +1,43 @@
+/* pages/login/login.wxss */
+page {
+  height: 100%;
+  width: 100%;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  top: 35%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.login-tourists {
+  background: -webkit-linear-gradient(left, rgb(29, 211, 172), rgb(2, 181, 226));
+  height: 100rpx;
+  box-sizing: border-box;
+  border-radius: 50rpx;
+  font-size: 40rpx;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-user {
+  background: -webkit-linear-gradient(left, rgb(29, 211, 172), rgb(2, 181, 226));
+  height: 100rpx;
+  box-sizing: border-box;
+  border-radius: 50rpx;
+  font-size: 40rpx;
+  align-items: center;
+  color: #fff;
+  margin-top: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

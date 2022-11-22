@@ -1,0 +1,5 @@
+/* pages/top/top.wxss */
+@import "../../component/filmListver/filmListver.wxss";
+page {
+  background: rgb(3, 37, 65);
+}
